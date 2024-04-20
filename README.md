@@ -23,6 +23,7 @@ Customer {
 - [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_separation) pattern ([Event sourcing](https://en.wikipedia.org/wiki/Domain-driven_design#Event_sourcing)).
 - Clean git commits that shows your work progress.
 - Use PHP 8.2.x only
+- Swagger
 
 ### Validations (Must)
 
@@ -42,7 +43,6 @@ Customer {
 - Please clone this repository in a new github repository in private mode and share with ID: `mason-chase` in private mode on github.com, make sure you do not erase my commits and then create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (code review).
 - Docker-compose project that loads database service automatically with `docker-compose up`
 
-## Presentation (Must)
+## Presentation (Nice To Have)
 - Web UI.
-- Swagger
 
