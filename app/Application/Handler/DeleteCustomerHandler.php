@@ -8,7 +8,6 @@ use App\Application\Command\DeleteCustomerCommand;
 use App\Domain\Repositories\CustomerRepository;
 
 class DeleteCustomerHandler implements CommandHandler {
-
     public function __construct( private CustomerRepository $customerRepository ) {
         //
     }

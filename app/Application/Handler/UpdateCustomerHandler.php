@@ -4,17 +4,13 @@ namespace App\Application\Handler;
 
 use App\Application\Command\Command;
 use App\Application\Command\CommandHandler;
-use App\Application\Command\Query;
-use App\Application\Command\QueryHandler;
 use App\Application\Command\UpdateCustomerCommand;
 use App\Domain\Repositories\CustomerRepository;
 
 class UpdateCustomerHandler implements CommandHandler {
-
     public function __construct( private CustomerRepository $customerRepository ) {
         //
     }
-
     public function handle( Command|UpdateCustomerCommand $command ) {
         $data = [
             'first_name'          => $command->getFirstName(),

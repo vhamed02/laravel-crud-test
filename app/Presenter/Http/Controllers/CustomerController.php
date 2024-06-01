@@ -20,7 +20,6 @@ class CustomerController extends Controller {
         //
     }
 
-
     public function view( $customerId ) {
         return response()->json(
             [
@@ -55,11 +54,11 @@ class CustomerController extends Controller {
 
     public function update( Request $request, $id ) {
         $request->validate( [
-            'email' => 'email|unique:customers',
-            'phoneNumber'       => [ 'sometimes', new PhoneNumber ],
+            'email'       => 'email|unique:customers',
+            'phoneNumber' => [ 'sometimes', new PhoneNumber ],
         ] );
-        $customer = EloquentCustomer::whereId( $id )->first();
-        if ( false == $customer ) {
+        $customer = $this->queryBus->handle( new GetCustomerQuery( $id ) );
+        if ( false === $customer ) {
             return throw new \InvalidArgumentException( 'Customer not found!' );
         }
         $this->commandBus->handle( new UpdateCustomerCommand(

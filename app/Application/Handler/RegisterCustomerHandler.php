@@ -21,7 +21,7 @@ class RegisterCustomerHandler implements CommandHandler {
     }
 
     public function handle( Command|RegisterCustomerCommand $command ) {
-        $customer = Customer::register(
+        $customer = new Customer(
             new FirstName( $command->firstName ),
             new LastName( $command->lastName ),
             new Email( $command->email ),
@@ -29,6 +29,6 @@ class RegisterCustomerHandler implements CommandHandler {
             new PhoneNumber( $command->phoneNumber ),
             new BankAccountNumber( $command->bankAccountNumber )
         );
-        $this->customerRepository->persist( $customer );
+        $this->customerRepository->create( $customer );
     }
 }

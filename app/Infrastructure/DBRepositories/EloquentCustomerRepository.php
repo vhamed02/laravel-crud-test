@@ -8,10 +8,7 @@ use App\Infrastructure\Models\EloquentCustomer;
 
 class EloquentCustomerRepository implements CustomerRepository {
 
-    private array $seen;
-
-    public function persist( Customer $customer ) {
-
+    public function create( Customer $customer ) {
         EloquentCustomer::create( [
             'first_name'          => $customer->getFirstName(),
             'last_name'           => $customer->getLastName(),
@@ -20,8 +17,6 @@ class EloquentCustomerRepository implements CustomerRepository {
             'email'               => $customer->getEmail(),
             'bank_account_number' => $customer->getBankAccountNumber()
         ] );
-
-        $this->seen[] = $customer;
     }
 
     public function update( int $customerId, array $data ): void {
@@ -37,9 +32,5 @@ class EloquentCustomerRepository implements CustomerRepository {
             throw new \InvalidArgumentException( "Customer not found!" );
         }
         $customer->delete();
-    }
-
-    public function seen(): array {
-        return $this->seen;
     }
 }

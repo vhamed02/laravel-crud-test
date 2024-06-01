@@ -5,7 +5,11 @@ namespace App\Domain\Repositories;
 use App\Domain\Models\Customer;
 
 interface CustomerRepository {
-    public function persist( Customer $customer );
+    public function create( Customer $customer );
 
-    public function seen(): array;
+    public function getById( $customerId );
+
+    public function update( int $customerId, array $data );
+
+    public function delete( int $customerId );
 }

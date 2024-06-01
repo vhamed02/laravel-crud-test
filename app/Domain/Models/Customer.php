@@ -11,9 +11,6 @@ use App\Domain\ValueObjects\LastName;
 use App\Domain\ValueObjects\PhoneNumber;
 
 class Customer {
-    private int $ID;
-    private array $events;
-
     public function __construct(
         private FirstName $firstName,
         private LastName $lastName,
@@ -23,35 +20,6 @@ class Customer {
         private BankAccountNumber $bankAccountNumber,
     ) {
         //
-    }
-
-    protected function capture( $event ) {
-        $this->events[] = $event;
-    }
-
-    public static function register(
-        FirstName $firstName,
-        LastName $lastName,
-        Email $email,
-        BirthDate $birthDate,
-        PhoneNumber $phoneNumber,
-        BankAccountNumber $bankAccountNumber
-    ) {
-        $customer = new self(
-            $firstName,
-            $lastName,
-            $email,
-            $birthDate,
-            $phoneNumber,
-            $bankAccountNumber,
-        );
-        $customer->capture( new CustomerRegistered( $customer ) );
-
-        return $customer;
-    }
-
-    public function getID(): int {
-        return $this->ID;
     }
 
     public function getFirstName(): string {
